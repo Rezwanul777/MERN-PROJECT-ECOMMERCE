@@ -15,7 +15,8 @@
   "author": "Rezwan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

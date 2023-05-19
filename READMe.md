@@ -11,3 +11,5 @@
 ## to server run pls command "npm run dev" in terminal.
 
 ## for tracking  HTTP request logger middleware for node.js use package morgan:"npm install --save-dev morgan".
+## HTTP error handeling-- npm i http-error
+
