@@ -4,6 +4,7 @@ const morgan=require('morgan')
 const xssClean = require('xss-clean')
 const rateLimit = require('express-rate-limit')
 const userRouter = require('./routers/userRouter')
+const seedRouter = require('./routers/seedRouter')
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.get('/test', (req, res) => {
 })
 
 app.use("/api/users",userRouter)
+app.use("/api/seed",seedRouter)
 
 // client error handeling
 

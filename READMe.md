@@ -24,3 +24,5 @@
 ## Mongo db database connection through packege install :"npm i mongoose"
 ## Schema and model creation
 ## node.bcrypt.js-A library to help you hash passwords. use "npm install bcrypt"
+
+## seed api create and insert data base.
