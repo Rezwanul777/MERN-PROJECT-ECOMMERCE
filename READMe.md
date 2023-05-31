@@ -26,3 +26,6 @@
 ## node.bcrypt.js-A library to help you hash passwords. use "npm install bcrypt"
 
 ## seed api create and insert data base.
+## user search, filter and pagination create.
+## create respnse handelers
+## get single user by id-- here i have handled mongoose error for invalid mongoose id.

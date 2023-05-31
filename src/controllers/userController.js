@@ -1,8 +1,10 @@
 const createError = require('http-errors')
 const User=require('../models/userModel');
+const { successResponse } = require('./responseController');
+const {mongoose}=require('mongoose')
 
-
-const getUser=async(req, res,next) => {
+// all users
+const getUsers=async(req, res,next) => {
   try {
 
     const search = req.query.search || "";
@@ -34,23 +36,57 @@ const getUser=async(req, res,next) => {
 
     if(!users) throw createError(404, "User not found")
 
-    res.status(200).send({
-        messsage:"users were returened...", 
+    return successResponse(res,{
+      statusCode:200,
+      message:"users were returened. successfully retrieved",
+      payload:{
         users,
         paginations:{
           totalPages:Math.ceil(count/limit), // total number of pages
           currentPage:page,
           previousPage:page-1 > 0 ? page-1 :null, // previous page
-          nextPage:page+1 <= Math.ceil(count/limit) ? page+1 : null, // next page
+          nextPage:page+1 <= Math.ceil(count/limit) ? page+1 : null, // nexttatuspage
         }
-     
+      }
+
     })
   } catch (error) {
     next(error)
   }
    
+}
 
+// single user
+
+const getUser=async (req,res,next)=>{
+  try {
+    // find by id of single user
+    const id=req.params.id
+    const options={password:0}
+    const user=await User.findById(id,options)
+
+    // if user not found
+    if(!user) {
+      throw createError(404, "User not found with id: ")
+    }
+
+    return successResponse(res,{
+      statusCode:200,
+      message:"Single user were returened. successfully retrieved",
+      payload:{
+        user,
+        
+      }
+
+    })
+  } catch (error) {
+    if(error instanceof mongoose.Error) {
+      next(createError(400, "invalid user id: "))
+      return;
+    }
+    next(error)
+  }
 }
 
 
-module.exports={getUser}
+module.exports={getUsers,getUser}
