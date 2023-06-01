@@ -29,3 +29,4 @@
 ## user search, filter and pagination create.
 ## create respnse handelers
 ## get single user by id-- here i have handled mongoose error for invalid mongoose id.
+## how to create service for single user.
